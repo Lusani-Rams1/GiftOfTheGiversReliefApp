@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Gift_of_the_Givers_Relief_App/1.0.0": {
+        "runtime": {
+          "Gift_of_the_Givers_Relief_App.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Gift_of_the_Givers_Relief_App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

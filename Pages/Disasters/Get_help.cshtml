@@ -1,0 +1,34 @@
+﻿@page
+@model Gift_of_the_Givers_Relief_App.Pages.Disasters.Get_helpModel
+@{
+	ViewData["Title"] = "Get Help";
+}
+
+<div class="form-wrapper">
+    <form method="post" class="form">
+        <label>Full Name*</label>
+        <input type="text" name="FullName" required />
+        <br />
+        <label>Email*</label>
+        <input type="email" name="Email" required />
+        <br />
+        <label>Phone Number*</label>
+        <input type="tel" name="PhoneNumber" required />
+        <br />
+        <label>City/Area*</label>
+        <input type="text" name="Location" required />
+        <br />
+        <label>Which cause affected you?*</label>
+        <select name="DisasterId" required>
+			<option value="1">Other</option>
+            <option value="2">KwaZulu-Natal Floods</option>
+            <option value="3">Western Cape Wildfires</option>
+            <option value="4">Eastern Cape Drought</option>
+        </select>
+        <br />
+        <label>Message (optional)</label>
+        <textarea name="Message" maxlength="500"></textarea>
+        <br />
+        <button type="submit">Get Help</button>
+    </form>
+</div>

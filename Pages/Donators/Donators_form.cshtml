@@ -1,0 +1,38 @@
+﻿@page
+@model Gift_of_the_Givers_Relief_App.Pages.Donators.Donators_formModel
+@{
+	ViewData["Title"] = "Donator page";
+}
+
+<div class="form-wrapper">
+    <form method="post" class="form">
+        <label>Full Name*</label>
+        <input type="text" name="FullName" required />
+        <br />
+        <label>Email*</label>
+        <input type="email" name="Email" required />
+        <br />
+        <label>Phone Number (optional)</label>
+        <input type="tel" name="PhoneNumber" />
+        <br />
+        <label>Donation Amount (ZAR)*</label>
+        <input type="number" name="Amount" min="10" step="0.01" required />
+        <br />
+        <label>Which cause?*</label>
+        <select name="DisasterId">
+            <option value="">General Fund</option>
+            <option value="1">KwaZulu-Natal Floods</option>
+            <option value="2">Western Cape Wildfires</option>
+            <option value="3">Eastern Cape Drought</option>
+        </select>
+
+        <label>
+            <input type="checkbox" name="IsAnonymous" /> Donate anonymously
+        </label>
+        <br />
+        <label>Message (optional)</label>
+        <textarea name="Message" maxlength="500"></textarea>
+        <br />
+        <button type="submit">Donate Now</button>
+    </form>
+</div>

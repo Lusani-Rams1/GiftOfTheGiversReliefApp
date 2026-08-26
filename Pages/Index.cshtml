@@ -1,0 +1,67 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<section class="hero">
+    <div class="hero-inner">
+        <p class="hero-eyebrow">Gift of the Givers Foundation</p>
+        <h1>When disaster strikes,<br />help should move fast.</h1>
+        <p>Supporting communities affected by disasters across South Africa & coordinating volunteers, donations, and relief efforts when it matters most.</p>
+        <div class="hero-ctas">
+            <a asp-page="/Disasters/Get_Help" class="btn btn-outline-light">Get Help</a>
+            <a asp-page="/Donators/Donators_form" class="btn btn-outline-light" >Donate Now</a>
+        </div>
+    </div>
+</section>
+
+
+<!--thinking of changing the redirecting to the article-->
+<section class="section">
+    <h2 class="section-title">Current Disasters</h2>
+    <div class="disaster-grid">
+        <article class="disaster-card">
+            <div class="disaster-thumb">KwaZulu-Natal</div>
+            <div class="disaster-body">
+                <h3>KwaZulu-Natal Floods</h3>
+                <p>Ongoing flood relief and shelter support across affected districts.</p>
+                <a asp-page="/Disasters/Details" asp-route-id="1">Get Help &rarr;</a>
+            </div>
+        </article>
+        <article class="disaster-card">
+            <div class="disaster-thumb">Western Cape</div>
+            <div class="disaster-body">
+                <h3>Western Cape Wildfires</h3>
+                <p>Emergency food parcels and firefighting support for rural communities.</p>
+                <a asp-page="/Disasters/Details"asp-route-id="2">Learn more &rarr;</a>
+            </div>
+        </article>
+        <article class="disaster-card">
+            <div class="disaster-thumb">Eastern Cape</div>
+            <div class="disaster-body">
+                <h3>Eastern Cape Drought</h3>
+                <p>Water tankering and agricultural relief for drought-stricken areas.</p>
+                <a asp-page="/Disasters/Details"asp-route-id="3">Learn more &rarr;</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section impact-section">
+    <h2 class="section-title">Our Impact</h2>
+    <div class="impact-grid">
+        <div>
+            <div class="impact-number">15,000+</div>
+            <div class="impact-label">Volunteers</div>
+        </div>
+        <div>
+            <div class="impact-number">120,000+</div>
+            <div class="impact-label">Food Parcels</div>
+        </div>
+        <div>
+            <div class="impact-number">25,000+</div>
+            <div class="impact-label">People Helped</div>
+        </div>
+    </div>
+</section>
