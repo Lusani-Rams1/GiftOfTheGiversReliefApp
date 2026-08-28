@@ -1,0 +1,41 @@
+@page
+@model Gift_of_the_Givers_Relief_App.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="form-wrapper">
+    <form method="post" class="form">
+        <h2>Create an account</h2>
+
+        <label class="label">First name</label>
+        <input class="input" asp-for="Input.FirstName" />
+        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+
+        <label class="label">Last name</label>
+        <input class="input" asp-for="Input.LastName" />
+        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+
+        <label class="label">Email</label>
+        <input class="input" asp-for="Input.Email" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+        <label class="label">Password</label>
+        <input class="input" asp-for="Input.Password" type="password" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+        <label class="label">Confirm password</label>
+        <input class="input" asp-for="Input.ConfirmPassword" type="password" />
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+        <button class="button" type="submit">Register</button>
+
+        <div style="margin-top:0.75rem">
+            <a asp-page="/Account/Login">Already have an account? Sign in</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
