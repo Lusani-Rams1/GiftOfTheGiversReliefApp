@@ -1,0 +1,39 @@
+@page
+@model Gift_of_the_Givers_Relief_App.Pages.EmployeeDashboard.VolunteerSignupsModel
+@{
+    ViewData["Title"] = "Volunteer Signups";
+}
+
+<section class="section">
+    <h2 class="section-title">Volunteer Signups</h2>
+
+    <div style="max-width:1000px;margin:0 auto;background:#fff;padding:1.25rem;border-radius:8px;">
+        <p style="margin-top:0;">Recent signups (demo sample):</p>
+
+        <table style="width:100%;border-collapse:collapse;">
+            <thead style="text-align:left;color:var(--text-muted);">
+                <tr>
+                    <th style="padding:0.5rem 0.75rem;">Name</th>
+                    <th style="padding:0.5rem 0.75rem;">Email</th>
+                    <th style="padding:0.5rem 0.75rem;">Location</th>
+                    <th style="padding:0.5rem 0.75rem;">Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.SampleSignups)
+                {
+                    <tr>
+                        <td style="padding:0.5rem 0.75rem;border-top:1px solid #eee;">@s.Name</td>
+                        <td style="padding:0.5rem 0.75rem;border-top:1px solid #eee;">@s.Email</td>
+                        <td style="padding:0.5rem 0.75rem;border-top:1px solid #eee;">@s.Location</td>
+                        <td style="padding:0.5rem 0.75rem;border-top:1px solid #eee;">@s.Availability</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div style="margin-top:1rem;color:var(--text-muted);">
+            <p>These entries are static examples in the demo. Wire to the real signups dataset for live data.</p>
+        </div>
+    </div>
+</section>

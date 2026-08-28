@@ -43,9 +43,6 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
             [DataType(DataType.Password)]
             [Compare(nameof(Password), ErrorMessage = "Passwords do not match.")]
             public string ConfirmPassword { get; set; } = string.Empty;
-
-            [MaxLength(50)]
-            public string? Role { get; set; }
         }
 
         [BindProperty]
@@ -75,7 +72,7 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
                 FirstName = Input.FirstName.Trim(),
                 LastName = Input.LastName.Trim(),
                 Email = emailLower,
-                Role = Input.Role?.Trim() ?? string.Empty,
+                Role = string.Empty,
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -84,7 +81,6 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
 
-            // lightweight sign-in: set a secure cookie with the user id
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,

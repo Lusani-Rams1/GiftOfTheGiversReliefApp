@@ -13,6 +13,10 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
         private readonly ApplicationDbContext _db;
         private readonly PasswordHasher<User> _passwordHasher;
 
+        // demo employee credentials (displayed on the login page)
+        private const string DemoEmployeeEmail = "employee@demo.local";
+        private const string DemoEmployeePassword = "DemoPass123!";
+
         public LoginModel(ApplicationDbContext db)
         {
             _db = db;
@@ -45,6 +49,42 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
             }
 
             var emailLower = Input.Email.Trim().ToLowerInvariant();
+
+            // Special case: demo employee login — create account on demand
+            if (emailLower == DemoEmployeeEmail && Input.Password == DemoEmployeePassword)
+            {
+                var employeeUser = await _db.Users.SingleOrDefaultAsync(u => u.Email.ToLower() == emailLower);
+                if (employeeUser is null)
+                {
+                    employeeUser = new User
+                    {
+                        FirstName = "Demo",
+                        LastName = "Employee",
+                        Email = DemoEmployeeEmail,
+                        Role = "Employee",
+                        CreatedAt = DateTime.UtcNow
+                    };
+
+                    employeeUser.PasswordHash = _passwordHasher.HashPassword(employeeUser, DemoEmployeePassword);
+
+                    _db.Users.Add(employeeUser);
+                    await _db.SaveChangesAsync();
+                }
+
+                var cookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Lax,
+                    Expires = DateTimeOffset.UtcNow.AddDays(7)
+                };
+
+                Response.Cookies.Append("GgUserId", employeeUser.UserID.ToString(), cookieOptions);
+
+                return RedirectToPage("/EmployeeDashboard/Index");
+            }
+
+            // regular user flow
             var user = await _db.Users.SingleOrDefaultAsync(u => u.Email.ToLower() == emailLower);
 
             if (user is null)
@@ -61,7 +101,7 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
                 return Page();
             }
 
-            var cookieOptions = new CookieOptions
+            var cookieOpts = new CookieOptions
             {
                 HttpOnly = true,
                 Secure = true,
@@ -69,7 +109,13 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
                 Expires = DateTimeOffset.UtcNow.AddDays(7)
             };
 
-            Response.Cookies.Append("GgUserId", user.UserID.ToString(), cookieOptions);
+            Response.Cookies.Append("GgUserId", user.UserID.ToString(), cookieOpts);
+
+            // if the user is an employee, send them to the Employee Dashboard
+            if (string.Equals(user.Role?.Trim(), "Employee", StringComparison.OrdinalIgnoreCase))
+            {
+                return RedirectToPage("/EmployeeDashboard/Index");
+            }
 
             if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
             {

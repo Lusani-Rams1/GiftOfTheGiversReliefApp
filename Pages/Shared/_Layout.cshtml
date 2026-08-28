@@ -9,17 +9,26 @@
 </head>
 <body>
     <header class="site-header">
-        <!--add logo-->
         <a asp-page="/Index" class="brand">
             <img src="~/images/GiftofTheGivers_logo.png" alt="Gift of the Givers" class="brand-logo" />
             <span class="brand-name">Gift of the Givers</span>
         </a>
-        <!-- Disasters/Volunteer/Donate/Login, these links i'll link them after making the pages but for now the nav isn't working -->
+
         <nav class="main-nav">
             <a asp-page="/Index">Home</a>
             <a asp-page="/Disasters/Details">Disasters</a>
+
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" id="donateDropdown" data-bs-toggle="dropdown" aria-expanded="false">Donate</a>
+                <ul class="dropdown-menu" aria-labelledby="donateDropdown">
+                    <li><a class="dropdown-item" asp-page="/Donators/Donators_form">Donate</a></li>
+                    <li><a class="dropdown-item" href="/Donators/TaxCertificate">Tax Certificate</a></li>
+                </ul>
+            </div>
+
             <a asp-page="/Volunteers/Volunteers_form">Volunteer</a>
-            <a asp-page="/Donators/Donators_form" class="btn-donate-nav">Donate</a>
+            <a asp-page="/ContactUs">ContactUs</a>
+
             <a asp-page="/Account/Login" class="btn-login">Login</a>
         </nav>
     </header>
