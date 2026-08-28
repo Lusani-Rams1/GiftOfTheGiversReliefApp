@@ -1,9 +1,12 @@
+using Gift_of_the_Givers_Relief_App.Filters;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Gift_of_the_Givers_Relief_App.Pages.EmployeeDashboard
 {
+    // Protected placeholder page letting employees create updates (demo).
+    [EmployeeAuthorize]
     public class PostUpdateModel : PageModel
     {
         public class UpdateInput
@@ -33,12 +36,9 @@ namespace Gift_of_the_Givers_Relief_App.Pages.EmployeeDashboard
                 return Page();
             }
 
-            // demo behaviour: show a success message but do not persist
+            // Demo behavior: show a success message only.
             StatusMessage = "Update published (demo).";
-
-            // clear form
             Input = new UpdateInput();
-
             return Page();
         }
     }
