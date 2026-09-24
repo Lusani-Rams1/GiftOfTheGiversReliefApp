@@ -1,49 +1,77 @@
 ﻿@page
 @model Gift_of_the_Givers_Relief_App.Pages.Volonteers.Volonteers_formModel
 @{
-	ViewData["Title"] = "Volunteer page";
+    ViewData["Title"] = "Volunteer";
 }
 
-<div class="form-wrapper">
-    <form method="post" class="form">
-        <label>Full Name*</label>
-        <input type="text" name="FullName" required />
-        <br />
-        <label>Email*</label>
-        <input type="email" name="Email" required />
-        <br />
-        <label>Phone Number*</label>
-        <input type="tel" name="PhoneNumber" required />
-        <br />
-        <label>City/Area*</label>
-        <input type="text" name="Location" required />
-        <br />
-        <label>Which cause do you want to help with?*</label>
-        <select name="DisasterId" required>
-            <option value="">General Volunteering</option>
-            <option value="1">KwaZulu-Natal Floods</option>
-            <option value="2">Western Cape Wildfires</option>
-            <option value="3">Eastern Cape Drought</option>
-        </select>
-        <br />
-        <label>Availability*</label>
-        <select name="Availability" required>
-            <option value="Weekdays">Weekdays</option>
-            <option value="Weekends">Weekends</option>
-            <option value="Both">Both</option>
-            <option value="Flexible">Flexible</option>
-        </select>
-        <br />
-        <label>Skills/Experience (optional)</label>
-        <textarea name="Skills" maxlength="500" placeholder="e.g. first aid, driving, logistics, translation"></textarea>
-        <br />
-        <label>
-            <input type="checkbox" name="HasOwnTransport" /> I have my own transport
-        </label>
-        <br />
-        <label>Message (optional)</label>
-        <textarea name="Message" maxlength="500"></textarea>
-        <br />
-        <button type="submit">Sign Up to Volunteer</button>
-    </form>
-</div>
+<section class="section">
+    <div class="container" style="max-width:720px;">
+        <div class="card" style="border-radius:12px;">
+            <div class="card-body">
+                <h2 class="section-title" style="margin-top:0;">Volunteer</h2>
+                <p class="text-muted">Sign up to volunteer — we'll contact you with opportunities that match your availability and skills.</p>
+
+                <form method="post" class="mt-3">
+                    <div class="mb-3">
+                        <label class="label">Full Name*</label>
+                        <input class="input form-control w-100" type="text" name="FullName" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">Email*</label>
+                        <input class="input form-control w-100" type="email" name="Email" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">Phone Number*</label>
+                        <input class="input form-control w-100" type="tel" name="PhoneNumber" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">City/Area*</label>
+                        <input class="input form-control w-100" type="text" name="Location" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">Which cause do you want to help with?*</label>
+                        <select class="input form-select w-100" name="DisasterId" required>
+                            <option value="">General Volunteering</option>
+                            <option value="1">KwaZulu-Natal Floods</option>
+                            <option value="2">Western Cape Wildfires</option>
+                            <option value="3">Eastern Cape Drought</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">Availability*</label>
+                        <select class="input form-select w-100" name="Availability" required>
+                            <option value="Weekdays">Weekdays</option>
+                            <option value="Weekends">Weekends</option>
+                            <option value="Both">Both</option>
+                            <option value="Flexible">Flexible</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">Skills/Experience (optional)</label>
+                        <textarea class="input form-control w-100" name="Skills" maxlength="500" placeholder="e.g. first aid, driving, logistics, translation"></textarea>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" type="checkbox" name="HasOwnTransport" id="hasTransport" />
+                        <label class="form-check-label" for="hasTransport">I have my own transport</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label">Message (optional)</label>
+                        <textarea class="input form-control w-100" name="Message" maxlength="500"></textarea>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary-accent" type="submit">Sign Up to Volunteer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
