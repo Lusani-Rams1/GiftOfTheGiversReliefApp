@@ -8,4 +8,4 @@ ALTER ROLE db_datareader ADD MEMBER [employee_demo];
 ALTER ROLE db_datawriter ADD MEMBER [employee_demo];
 
 -- Optional (only if you plan to run EF migrations from the app):
--- ALTER ROLE db_ddladmin ADD MEMBER [employee_demo];
+-- ALTER ROLE db_ddladmin ADD MEMBER [employee_demo];,,.,,.,
