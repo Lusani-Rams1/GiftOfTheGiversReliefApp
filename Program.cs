@@ -1,11 +1,18 @@
 using Gift_of_the_Givers_Relief_App.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Read connection string from environment first (recommended for secrets in production),
+// fallback to DefaultConnection from configuration (appsettings.json).
+// Set the environment variable name "SQL_CONNECTION" to a SQL-auth connection string:
+// e.g. "Server=tcp:<server>.database.windows.net,1433;Initial Catalog=<db>;User ID=<user>;Password=<password>;Encrypt=True;TrustServerCertificate=False;MultipleActiveResultSets=True;"
+var connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION")
+                       ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -16,7 +23,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
