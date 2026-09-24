@@ -1,0 +1,32 @@
+@page
+@model Gift_of_the_Givers_Relief_App.Pages.Admin.Database.IndexModel
+@{
+    ViewData["Title"] = "Database";
+}
+
+<section class="container my-4">
+    <h1>Database</h1>
+    <p class="text-muted">Quick links to inspect or manage tables. Scaffold or implement per-entity CRUD pages where needed.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Table</th>
+                <th>Rows</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model.Tables)
+            {
+                <tr>
+                    <td>@t.Name</td>
+                    <td>@t.Count</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-secondary" asp-page="@t.Link">Open</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

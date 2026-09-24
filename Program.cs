@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Gift_of_the_Givers_Relief_App.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Register EF Core DbContext (reads "DefaultConnection" from appsettings or environment)
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

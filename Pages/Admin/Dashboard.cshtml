@@ -1,0 +1,65 @@
+@page
+@model Gift_of_the_Givers_Relief_App.Pages.Admin.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<section class="container my-4">
+    <h1>Admin Dashboard</h1>
+    <p class="text-muted">Quick summary of database counts and donation totals.</p>
+
+    <div class="row g-3">
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h6 class="mb-1">Disasters</h6>
+                <strong>@Model.DisasterCount</strong>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h6 class="mb-1">Relief Projects</h6>
+                <strong>@Model.ReliefProjectCount</strong>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h6 class="mb-1">Users</h6>
+                <strong>@Model.UserCount</strong>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h6 class="mb-1">Donors</h6>
+                <strong>@Model.DonorCount</strong>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h6 class="mb-1">Volunteers</h6>
+                <strong>@Model.VolunteerCount</strong>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h6 class="mb-1">Volunteer Assignments</h6>
+                <strong>@Model.VolunteerAssignmentCount</strong>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h6 class="mb-1">Total Donations (ZAR)</h6>
+                <strong>@Model.TotalDonations.ToString("N2")</strong>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-4">
+        <a asp-page="/Admin/Database/Index" class="btn btn-outline-primary">Manage Database</a>
+    </section>
+</section>
