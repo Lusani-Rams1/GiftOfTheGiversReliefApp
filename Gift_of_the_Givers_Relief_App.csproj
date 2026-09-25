@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Gift_of_the_Givers_Relief_App</RootNamespace>
     <UserSecretsId>884fc64c-bfde-4508-a01d-c5f4ed66622c</UserSecretsId>
+	  
 	 
   </PropertyGroup>
 
