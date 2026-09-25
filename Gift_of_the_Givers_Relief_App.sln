@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36717.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gift_of_the_Givers_Relief_App", "Gift_of_the_Givers_Relief_App.csproj", "{76DFFD40-EAB1-44C1-9756-018B54B23B7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftOfTheGiversFunctions", "GiftOfTheGivers.Functions\GiftOfTheGiversFunctions.csproj", "{5CAD2343-D62D-4018-ABD6-A84CCFEA9359}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{76DFFD40-EAB1-44C1-9756-018B54B23B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76DFFD40-EAB1-44C1-9756-018B54B23B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76DFFD40-EAB1-44C1-9756-018B54B23B7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CAD2343-D62D-4018-ABD6-A84CCFEA9359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CAD2343-D62D-4018-ABD6-A84CCFEA9359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CAD2343-D62D-4018-ABD6-A84CCFEA9359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CAD2343-D62D-4018-ABD6-A84CCFEA9359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

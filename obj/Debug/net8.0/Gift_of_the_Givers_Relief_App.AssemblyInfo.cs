@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("884fc64c-bfde-4508-a01d-c5f4ed66622c")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gift_of_the_Givers_Relief_App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2d7efd922821f764896c7efc2b25c9f1dfc2124")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f984191d325c493860e599d4cdc5f902cf49f761")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gift_of_the_Givers_Relief_App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gift_of_the_Givers_Relief_App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

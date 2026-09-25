@@ -54,6 +54,14 @@
               "target": "Package",
               "version": "[1.21.0, )"
             },
+            "Microsoft.Azure.Functions.Worker": {
+              "target": "Package",
+              "version": "[2.52.0, )"
+            },
+            "Microsoft.Azure.Functions.Worker.Extensions.Http": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"
