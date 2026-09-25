@@ -50,7 +50,7 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
 
             var emailLower = Input.Email.Trim().ToLowerInvariant();
 
-            // Special case: demo employee login — create account on demand
+            // demo employee login — create account on demand
             if (emailLower == DemoEmployeeEmail && Input.Password == DemoEmployeePassword)
             {
                 var employeeUser = await _db.Users.SingleOrDefaultAsync(u => u.Email.ToLower() == emailLower);
@@ -111,10 +111,22 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
 
             Response.Cookies.Append("GgUserId", user.UserID.ToString(), cookieOpts);
 
-            // if the user is an employee, send them to the Employee Dashboard
+            // Employees go to the employee dashboard first
             if (string.Equals(user.Role?.Trim(), "Employee", StringComparison.OrdinalIgnoreCase))
             {
                 return RedirectToPage("/EmployeeDashboard/Index");
+            }
+
+            // Volunteers go to their own dashboard (or pending screen)
+            var volunteer = await _db.Volunteers
+                .FirstOrDefaultAsync(v => v.UserID == user.UserID);
+
+            if (volunteer is not null)
+            {
+                if (volunteer.Status == "Approved")
+                    return RedirectToPage("/Volunteers/Dashboard");
+
+                return RedirectToPage("/Volunteers/Pending");
             }
 
             if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
@@ -124,5 +136,5 @@ namespace Gift_of_the_Givers_Relief_App.Pages.Account
 
             return RedirectToPage("/Index");
         }
-    }
+    }  
 }

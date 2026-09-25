@@ -1,0 +1,92 @@
+﻿@page
+@model Gift_of_the_Givers_Relief_App.Pages.Admin.Volunteers.VerifyModel
+@{
+    ViewData["Title"] = "Verify Volunteers";
+}
+
+<section class="container my-4">
+    <h1>Verify Volunteers</h1>
+    <p class="text-muted">Approve or reject volunteer sign-ups.</p>
+
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+        <div class="alert alert-success">@Model.StatusMessage</div>
+    }
+
+    <h3 class="mt-4">Pending (@Model.PendingVolunteers.Count)</h3>
+    @if (!Model.PendingVolunteers.Any())
+    {
+        <p class="text-muted">No pending volunteers.</p>
+    }
+    else
+    {
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Location</th>
+                    <th>Availability</th>
+                    <th>Skills</th>
+                    <th>Transport</th>
+                    <th>Submitted</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var v in Model.PendingVolunteers)
+                {
+                    <tr>
+                        <td>@v.User?.FirstName @v.User?.LastName</td>
+                        <td>@v.User?.Email</td>
+                        <td>@v.PhoneNumber</td>
+                        <td>@v.Location</td>
+                        <td>@v.Availability</td>
+                        <td>@v.Skills</td>
+                        <td>@(v.HasOwnTransport ? "Yes" : "No")</td>
+                        <td>@v.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd")</td>
+                        <td class="text-nowrap">
+                            <form method="post" asp-page-handler="Approve" style="display:inline;">
+                                <input type="hidden" name="id" value="@v.VolunteerID" />
+                                <button class="btn btn-sm btn-success" type="submit">Approve</button>
+                            </form>
+                            <form method="post" asp-page-handler="Reject" style="display:inline;">
+                                <input type="hidden" name="id" value="@v.VolunteerID" />
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <h3 class="mt-4">Approved (@Model.ApprovedVolunteers.Count)</h3>
+    <ul class="list-group">
+        @foreach (var v in Model.ApprovedVolunteers)
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@v.User?.FirstName @v.User?.LastName — @v.User?.Email</span>
+                <form method="post" asp-page-handler="Reject">
+                    <input type="hidden" name="id" value="@v.VolunteerID" />
+                    <button class="btn btn-sm btn-outline-danger" type="submit">Revoke</button>
+                </form>
+            </li>
+        }
+    </ul>
+
+    <h3 class="mt-4">Rejected (@Model.RejectedVolunteers.Count)</h3>
+    <ul class="list-group">
+        @foreach (var v in Model.RejectedVolunteers)
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@v.User?.FirstName @v.User?.LastName — @v.User?.Email</span>
+                <form method="post" asp-page-handler="Approve">
+                    <input type="hidden" name="id" value="@v.VolunteerID" />
+                    <button class="btn btn-sm btn-outline-success" type="submit">Approve</button>
+                </form>
+            </li>
+        }
+    </ul>
+</section>

@@ -1,0 +1,55 @@
+﻿@page
+@model Gift_of_the_Givers_Relief_App.Pages.Volunteers.DashboardModel
+@{
+    ViewData["Title"] = "Volunteer Dashboard";
+}
+
+<section class="container my-4">
+    <h1>Welcome, @Model.User?.FirstName</h1>
+    <p class="text-muted">You're an approved volunteer. Here's your status and any assignments.</p>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h6 class="mb-1">Status</h6>
+                <strong class="text-success">@Model.Volunteer?.Status</strong>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h6 class="mb-1">Availability</h6>
+                <strong>@Model.Volunteer?.Availability</strong>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h6 class="mb-1">Location</h6>
+                <strong>@Model.Volunteer?.Location</strong>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="mt-4">Your Assignments</h3>
+    @if (!Model.Assignments.Any())
+    {
+        <p class="text-muted">No assignments yet. We'll reach out when a matching opportunity appears.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr><th>Project</th><th>Role</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model.Assignments)
+                {
+                    <tr>
+                        <td>@a.ReliefProjectID</td>
+                        <td>@a.Role</td>
+                        <td>@a.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</section>

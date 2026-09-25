@@ -1,0 +1,26 @@
+﻿@page
+@model Gift_of_the_Givers_Relief_App.Pages.Volunteers.PendingModel
+@{
+    ViewData["Title"] = "Volunteer Status";
+}
+
+<section class="container my-4" style="max-width:640px;">
+    <div class="card p-4">
+        @if (Model.Status == "Rejected")
+        {
+            <h1 class="h4">Application not approved</h1>
+            <p class="text-muted">
+                Unfortunately your volunteer application wasn't approved at this time.
+                If you think this is a mistake, please contact us.
+            </p>
+        }
+        else
+        {
+            <h1 class="h4">Your application is pending</h1>
+            <p class="text-muted">
+                Thanks for signing up! An admin will review your volunteer application soon.
+                Check back later — this page will update automatically once approved.
+            </p>
+        }
+    </div>
+</section>

@@ -24,7 +24,11 @@ namespace Gift_of_the_Givers_Relief_App.Models
         public string Status { get; set; } = null!;
 
         public User? User { get; set; }
-
+        public string? Location { get; set; }
+        public int? DisasterID { get; set; }
+        public bool HasOwnTransport { get; set; }
+        public string? Message { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<VolunteerAssignment> VolunteerAssignments { get; set; } = new HashSet<VolunteerAssignment>();
     }
 }
